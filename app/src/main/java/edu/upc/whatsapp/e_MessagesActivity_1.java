@@ -79,8 +79,7 @@ public class e_MessagesActivity_1 extends Activity {
     @Override
     protected List<Message> doInBackground(Integer... userIds) {
 
-//...
-      return null;
+      return RPC.retrieveMessages(userIds[0], userIds[1]);
     }
 
     @Override
@@ -91,7 +90,9 @@ public class e_MessagesActivity_1 extends Activity {
       } else {
         toastShow(all_messages.size()+" messages downloaded");
 
-        //...
+        adapter = new MyAdapter_messages(e_MessagesActivity_1.this, all_messages, globalState.my_user);
+        conversation = (ListView)findViewById(R.id.conversation);
+        conversation.setAdapter(adapter);
 
       }
     }
